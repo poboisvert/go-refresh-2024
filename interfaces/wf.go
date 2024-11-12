@@ -2,6 +2,7 @@ package main
 
 import "errors"
 
+// WellsFargo struct
 type WellsFargo struct {
 	name    string
 	balance int
