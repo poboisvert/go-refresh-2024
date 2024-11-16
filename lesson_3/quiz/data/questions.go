@@ -12,7 +12,7 @@ type Question struct {
 }
 
 func LoadQuestions() ([]Question, error) {
-	jsonData, err := os.ReadFile("quiz.json") // Removed extra parentheses around the file name
+	jsonData, err := os.ReadFile("db.json") // Removed extra parentheses around the file name
 	if err != nil {
 		return nil, fmt.Errorf("Error loading file: %w", err)
 	}

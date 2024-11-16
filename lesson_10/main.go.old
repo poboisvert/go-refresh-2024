@@ -1,0 +1,36 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+const (
+	SPIN_CHARS = `\i/-`
+)
+
+func main() {
+	fmt.Println("Main Start")
+
+	go spinner(100 * time.Millisecond)
+	go work()
+
+	fmt.Println("Main Completed")
+
+	time.Sleep(6 * time.Second)
+
+}
+
+func work() {
+	time.Sleep(5 * time.Second)
+	fmt.Println("Completed")
+}
+
+func spinner(delay time.Duration) {
+	fmt.Println("Goroutine is started")
+
+	for index := 0; ; index = (index + 1) % len(SPIN_CHARS) {
+		fmt.Printf("\r%c", SPIN_CHARS[index])
+		time.Sleep(delay)
+	}
+}
