@@ -1,20 +1,24 @@
 package main
 
 import (
-	transactions "bank/lib/"
+	operations "bank/lib"
 	"fmt"
 	"time"
 )
 
 func main() {
 
-	go func() {
-		transactions.Deposit(200)
-		fmt.Println("=", transactions.Balance())
-	}()
+	// No memory if outside go goroutine
+	//go func() {
+	//	operations.Deposit(200)
+	//	fmt.Println("=", operations.Balance())
+	//}()
 
-	go transactions.Deposit(500)
+	operations.Deposit(300)
+	operations.Deposit(300)
+	operations.Withdraw(400)
+
 	time.Sleep(2 * time.Second)
 
-	fmt.Println("=", transactions.Balance())
+	fmt.Println("Balance:", operations.Balance())
 }
